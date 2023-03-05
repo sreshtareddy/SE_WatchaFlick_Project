@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+
+label {
+    font-size: medium;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+	color: #ffffff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-family: 'Nunito', sans-serif;
+    font-size: 22px;
+    color: #fff;
+}
+
+body {
+    min-height: 100vh;
+    background-color: rgb(67, 67, 67);
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+section {
+    width: 100%;
+    max-width: 400px;
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 1rem;
+    background-color: rgb(100, 105, 0);
+    border-radius: 2rem;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    flex-grow: 1;
+    padding-bottom: 0.5rem;
+}
+
+a, a:visited {
+    color: #f1ff97;
+}
+
+input,
+button,
+textarea {
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 12px;
+  padding: 0.25rem;
+  border-radius: 0.5rem;
+  box-sizing: border-box;
+  width: 500px;
+}
+
+button {
+  margin-top: 1rem;
+}
+
+button {
+  padding: 0.5rem;
+}
+
+#submit {
+    width: 250px;
+}
