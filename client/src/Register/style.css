@@ -1,8 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
 
+
 label {
     font-size: medium;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-family: "Inter";
 	color: #ffffff;
 }
 
@@ -13,7 +14,7 @@ label {
 }
 
 html {
-    font-family: 'Nunito', sans-serif;
+    font-family:"Inter";
     font-size: 22px;
     color: #fff;
 }
@@ -48,14 +49,10 @@ form {
     padding-bottom: 0.5rem;
 }
 
-a, a:visited {
-    color: #f1ff97;
-}
-
 input,
 button,
 textarea {
-  font-family: 'Ubuntu', sans-serif;
+  font-family: "Inter";
   font-size: 12px;
   padding: 0.25rem;
   border-radius: 0.5rem;
@@ -73,4 +70,21 @@ button {
 
 #submit {
     width: 250px;
+}
+
+.instructions {
+    font-family: "Inter";
+    font-size: 0.75rem;
+    border-radius: 0.5rem;
+    background: #0000002c;
+    color: #ff5656;
+    padding: 0.25rem;
+    position: relative;
+    bottom: -10px;
+    align-self: center;
+}
+
+.offscreen {
+    position: absolute;
+    left: -9999px;
 }
