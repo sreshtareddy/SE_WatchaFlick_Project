@@ -5,6 +5,11 @@ label {
     font-size: medium;
     font-family: "Inter";
 	color: #ffffff;
+    font-weight: bolder;
+}
+
+div {
+ padding-block: auto;
 }
 
 * {
@@ -70,6 +75,21 @@ button {
 
 #submit {
     width: 250px;
+}
+
+.regForm {
+    font-family: "Inter";
+    font-size: 0.75rem;
+    border-radius: 2rem;
+    background: #ffffff2c;
+    color: #ffffff;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    width: 600px;
+    position: relative;
+    align-self: center;
 }
 
 .instructions {

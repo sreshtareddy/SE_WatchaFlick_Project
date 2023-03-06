@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-import validator from "validator";
 import './style.css'
 import "@fontsource/inter";
 import axios from "axios"
@@ -25,10 +24,7 @@ function Register() {
 
     const handleClick = e =>{
         e.preventDefault();
-        
-
-        axios.post("http://localhost:3000/api/users/register", {first_name:credentials.firstName, last_name:credentials.lastName, password:credentials.password, email:credentials.email, password2:credentials.password2, mobile:credentials.mobile}) .then(response => {setErrMsg(null);}).catch(error => {if (error.response.status != 200) {setErrMsg(error.response.data);}});
-
+        axios.post("http://localhost:3000/api/users/register", {first_name:credentials.firstName, last_name:credentials.lastName, password:credentials.password, email:credentials.email, password2:credentials.password2, mobile:credentials.mobile}) .then(response => {setErrMsg(null);}).catch(error => {if (error.response.status !== 200) {setErrMsg(error.response.data);}});
         console.log(err)
     }
 
@@ -43,7 +39,7 @@ function Register() {
         }
         if (id === "email") {
             const eml = EMAIL_REGEX.test(e.target.value)
-            if (eml || e.target.value == ""){
+            if (eml || e.target.value === ""){
                 setCredentials({firstName:credentials.firstName, lastName:credentials.lastName, email:e.target.value, password:credentials.password, password2:credentials.password2, mobile:credentials.mobile});
                 setIsValidEmail(true);
             }
@@ -79,7 +75,7 @@ function Register() {
     };
 
     return(
-        <div id='regForm'>
+        <div className='regForm'>
             <form onSubmit={handleClick}>
                 <div>
                     <label htmlFor="firstname">FIRST NAME:</label><br></br>
