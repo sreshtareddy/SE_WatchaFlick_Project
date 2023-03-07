@@ -74,6 +74,7 @@ button {
 }
 
 #submit {
+    align-self: center;
     width: 250px;
 }
 
@@ -98,7 +99,10 @@ button {
     border-radius: 0.5rem;
     background: #0000002c;
     color: #ff5656;
-    padding: 0.25rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
     position: relative;
     bottom: -10px;
     align-self: center;
@@ -107,4 +111,15 @@ button {
 .offscreen {
     position: absolute;
     left: -9999px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.formElement{
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.errMsg{
+    color: #ff5656;
 }

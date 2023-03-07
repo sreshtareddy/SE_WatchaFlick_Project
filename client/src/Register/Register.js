@@ -25,7 +25,8 @@ function Register() {
     const handleClick = e =>{
         e.preventDefault();
         axios.post("http://localhost:3000/api/users/register", {first_name:credentials.firstName, last_name:credentials.lastName, password:credentials.password, email:credentials.email, password2:credentials.password2, mobile:credentials.mobile}) .then(response => {setErrMsg(null);}).catch(error => {if (error.response.status !== 200) {setErrMsg(error.response.data);}});
-        console.log(err)
+        console.log(err[Object.keys(err)[0]]);
+        setTimeout(()=> {setErrMsg("")}, 3000);
     }
 
     const handleInputChange = e => {
@@ -76,44 +77,45 @@ function Register() {
 
     return(
         <div className='regForm'>
+            <p className={err[Object.keys(err)[0]] !== ""?'errorMsg':"offscreen"}>{err[Object.keys(err)[0]]}</p>
             <form onSubmit={handleClick}>
-                <div>
+                <div className='formElement'>
                     <label htmlFor="firstname">FIRST NAME:</label><br></br>
-                    <input type="text" placeholder="First Name" required id="firstName" onChange={(e) =>{handleInputChange(e)}}/>
+                    <input type="text" placeholder="First Name"  required id="firstName" onChange={(e) =>{handleInputChange(e)}}/>
                 </div>
-                <div>
+                <div className='formElement'>
                     <label htmlFor="lastname">LAST NAME:</label><br></br>
                     <input type="text" placeholder="Last Name" required id="lastName" onChange={(e) =>{handleInputChange(e)}}/>
                 </div>
-                <div>
+                <div className='formElement'>
                     <label htmlFor="email">EMAIL:</label><br></br>
                     <input type="email" placeholder="Enter Email" required id="email" onChange={(e) =>{handleInputChange(e)}}/>
                 </div>
-                <p id="pwdnote" className={isValidEmail ? "offscreen" : "instructions"}>
+                <p id="errNote" className={isValidEmail ? "offscreen" : "instructions"}>
                     INVALID EMAIL!!!
                 </p>
-                <div>
+                <div className='formElement'>
                     <label htmlFor="password">PASSWORD:</label><br></br>
                     <input type="password" placeholder="Enter Password" required id="password" onChange={(e) =>{handleInputChange(e)}} onFocus={(e) =>{handleInputChange(e)}}/>
                 </div>
-                <p id="pwdnote" className={isValidPwd ? "offscreen" : "instructions"}>
+                <p id="errNote" className={isValidPwd ? "offscreen" : "instructions"}>
                     8 to 24 characters.<br />
                     Must include uppercase and lowercase letters, a number and a special character.<br />
                     Allowed special characters: <span aria-label="exclamation mark">!</span> <span aria-label="at symbol">@</span> <span aria-label="hashtag">#</span> <span aria-label="dollar sign">$</span> <span aria-label="percent">%</span>
                 </p>
-                <div>
+                <div className='formElement'>
                     <label htmlFor="confirmPassword">CONFIRM PASSWORD:</label><br></br>
                     <input type="password" placeholder="Confirm Password" required id="confirmPassword" onChange={(e) =>{handleInputChange(e)}} onFocus={(e) =>{handleInputChange(e)}}/>
                 </div>
-                <p id="pwdnote" className={isValidConfirmPwd ? "offscreen" : "instructions"}>
+                <p id="errNote" className={isValidConfirmPwd ? "offscreen" : "instructions"}>
                     PASSWORDS DON'T MATCH!!!
                 </p>
-                <div>
+                <div className='formElement'>
                     <label htmlFor="mobile">MOBILE NUMBER:</label><br></br>
                     <input type="text" placeholder="Enter Mobile" required id="mobile" onChange={(e) =>{handleInputChange(e)}}/>
                 </div>
                 <br></br>
-                <div>
+                <div className='formElement'>
                     <input type="submit" required id="submit"></input>
                 </div>
                 
