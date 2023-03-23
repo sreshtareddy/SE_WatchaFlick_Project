@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-import './style.css'
 import "@fontsource/inter";
 import axios from "axios"
 
