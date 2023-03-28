@@ -8,6 +8,7 @@ import CustomerHome from './Components/Customers/CustomerHome';
 // React slick css
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import "@fontsource/inter";
 function App() {
   return (
     <>

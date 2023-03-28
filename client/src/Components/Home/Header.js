@@ -84,7 +84,7 @@ function Header() {
                 </Link>
               </li>
             </ul>
-            {button && <Button buttonStyle='btn--outline'>LOGIN</Button>}
+            {button && <Button buttonStyle='btn--outline' url="/login">LOGIN</Button>}
           </div>
         </nav>
       </>

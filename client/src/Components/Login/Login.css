@@ -1,0 +1,40 @@
+.c-lg-main {
+    font-size: large;
+    font-style: bold;
+    padding-top: 10%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.c-lg-main-item {
+    width: 600px;
+    height: 600px;
+    background-color: #F5D16D;
+    padding: 2rem;
+    border-radius: 2rem;
+    border-width: 1rem;
+    border-color: #F8E08B;
+}
+
+.c-lg-form {
+    background-color: #333333;
+    border-radius: 2rem;
+    padding: 2rem;
+    display: grid;
+}
+
+.c-lg-form-item {
+    width: 100%;
+    max-width: 100%;
+    display: grid;
+    padding-top: 2rem;
+}
+
+.c-lg-nac {
+    display: grid;
+}
+
+.c-lg-form-btns{
+    display: grid;
+}
