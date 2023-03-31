@@ -65,11 +65,6 @@ const Login = () => {
     }
   };
 
-  const handleSignUp = async (event) =>{
-    event.preventDefault();
-
-  };
-
   return (
     <main className='c-lg-main'>
       {success ? (
@@ -81,9 +76,9 @@ const Login = () => {
         <section className='c-lg-main-item'>
           <form className='c-lg-form' onSubmit={handleSubmit}>
             <div className='c-lg-form-item'>
-              <label className='c-lg-label' htmlFor="username">Email/Phone No.:</label>
+              <label className='c-lg-label' htmlFor="username">EMAIL/MOBILE:</label>
               <input
-                className='c-lg-username'
+                className='c-lg-input'
                 type="text"
                 id="username"
                 autoComplete="off"
@@ -93,9 +88,9 @@ const Login = () => {
               />
             </div>
             <div className='c-lg-form-item'>
-              <label className='c-lg-label' htmlFor="password">Password:</label>
+              <label className='c-lg-label' htmlFor="password">PASSWORD:</label>
               <input
-                className='c-lg-password'
+                className='c-lg-input'
                 type="password"
                 id="password"
                 onChange={handlePasswordChange}
@@ -104,7 +99,7 @@ const Login = () => {
               />
             </div>
             <div className='c-lg-form-item'>
-              
+
               <Button type='button'
                 className='btns'
                 buttonStyle='btn--outline'
@@ -113,10 +108,9 @@ const Login = () => {
               >
                 SIGN IN
               </Button>
-              
             </div>
-
           </form>
+
           <div className='c-lg-nac'>
             <p className='c-lg-nac-item'>
               Need an Account?
@@ -131,10 +125,10 @@ const Login = () => {
                 SIGN UP
               </Button>
             </div>
-
           </div>
 
           <div className='c-lg-tp-buttons'>
+            <p>LOGIN WITH GOOGLE: </p>
             <div className='c-lg-auth-button'>
               <GoogleLogin
                 clientId={clientId}
@@ -144,7 +138,7 @@ const Login = () => {
                 isSignedIn={true}
               />
             </div>
-
+            <p>LOGIN WITH FB: </p>
             <div className='c-lg-auth-button'>
               <FacebookLogin
                 appId="1829736540733671"
