@@ -50,7 +50,7 @@ const Login = () => {
       console.log(response.data);
     } catch (error) {
       setErrMsg(error.response.data);
-      console.log(error.response.data);
+      console.log(errMsg);
     }
   };
 
@@ -74,6 +74,7 @@ const Login = () => {
         </section>
       ) : (
         <section className='c-lg-main-item'>
+          <p>{errMsg}</p>
           <form className='c-lg-form' onSubmit={handleSubmit}>
             <div className='c-lg-form-item'>
               <label className='c-lg-label' htmlFor="username">EMAIL/MOBILE:</label>
@@ -126,6 +127,7 @@ const Login = () => {
               </Button>
             </div>
           </div>
+          
 
           <div className='c-lg-tp-buttons'>
             <p>LOGIN WITH GOOGLE: </p>

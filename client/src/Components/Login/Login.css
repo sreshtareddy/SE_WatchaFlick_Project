@@ -1,12 +1,12 @@
 
 
 .c-lg-main {
-    font-size: large;
+    font-size: medium;
     font-style: bold;
     display: flex;
     flex-direction: column;
     align-items: center;
-    vertical-align: center;
+    margin-top: 50px;
     background-color: #606060;
 }
 
@@ -14,8 +14,8 @@
     width: 50%;
     height: max-content;
     background-color: #F5D16D;
-    padding: 2rem;
-    border-radius: 2rem;
+    padding: 1rem;
+    border-radius: 1rem;
     border-width: 1rem;
     border-color: #333333;
 }
@@ -28,14 +28,14 @@
 .c-lg-input{
     width: 100%;
     max-width: 100%;
-    height: max-content;
+    height: 40px;
     border: none;
     border-radius: 0.5rem;
 }
 
 .c-lg-form {
     background-color: #333333;
-    border-radius: 2rem;
+    border-radius: 1rem;
     padding: 1rem;
     display: grid;
 }
@@ -45,7 +45,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 2rem;
+    padding-top: 1rem;
 }
 
 .c-lg-nac {
@@ -54,9 +54,9 @@
     padding: 1rem 0rem 1rem 0rem;
     align-items: center;
     background-color: #333333;
-    border-radius: 2rem;
+    border-radius: 1rem;
     color: antiquewhite;
-    font-size: larger;
+    font-size: medium;
 }
 
 .c-lg-nac-item {
@@ -69,7 +69,7 @@
     flex-direction: column;
     align-items: center;
     background-color: #333333;
-    border-radius: 2rem;
+    border-radius: 1rem;
     color:antiquewhite;
-    font-size: large;
+    font-size: medium;
 }
