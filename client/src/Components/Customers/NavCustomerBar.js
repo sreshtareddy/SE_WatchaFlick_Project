@@ -2,10 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { Button } from '../Common/Button';
 import { Link } from 'react-router-dom';
 import './CustomerHeader.css';
-import { BiChevronDown, BiMenu, BiSearch } from "react-icons/bi";
 
 function NavCustomerBar() {
-    const [click, setClick] = useState(false);
+  const [click, setClick] = useState(false);
   const [button, setButton] = useState(true);
   const handleClick = () => setClick(!click);
   const closeMobileMenu = () => setClick(false);
@@ -39,20 +38,20 @@ function NavCustomerBar() {
           </div>
           <ul className={click ? 'nav-menu active' : 'nav-menu'}>
           
-          <div className="w-full flex items-center gap-3 bg-white px-3 py-2 rounded-md">
+          
           
             <li>
               <Link
-                to='/sign-up'
+                to='/login'
                 className='nav-links-mobile'
                 onClick={closeMobileMenu}
               >
                 Login
                 </Link>
             </li>
-            </div>
+           
           </ul>
-          {button && <Button buttonStyle='btn--outline'>LOGIN</Button>}
+          {button && <Button buttonStyle='btn--outline' url="/login">LOGIN</Button>}
           
         </div>
       </nav>

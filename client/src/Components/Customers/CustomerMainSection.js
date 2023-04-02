@@ -7,36 +7,6 @@ import EntertainmentCardSlider from '../Entertainment/EntertainmentCardSlider';
 import "./CustomerMainSection.css";
 
 function CustomerMainSection() {
-  const [recommendedMovies, setRecommendedMovies] = useState([]);
-  const [premierMovies, setPremierMovies] = useState([]);
-  const [onlineStreamEvents, setOnlineStreamEvents] = useState([]);
-
-  useEffect(() => {
-    const requestPopularMovies = async () => {
-      const getPopularMovies = await axios.get("/movie/popular");
-      setRecommendedMovies(getPopularMovies.data.results);
-    };
-
-    requestPopularMovies();
-  }, []);
-
-  useEffect(() => {
-    const requestTopRatedMovies = async () => {
-      const getTopRatedMovies = await axios.get("/movie/top_rated");
-      setPremierMovies(getTopRatedMovies.data.results);
-    };
-
-    requestTopRatedMovies();
-  }, []);
-
-  useEffect(() => {
-    const requestUpcomingMovies = async () => {
-      const getUpcomingMovies = await axios.get("/movie/upcoming");
-      setOnlineStreamEvents(getUpcomingMovies.data.results);
-    };
-
-    requestUpcomingMovies();
-  }, []);
   return (
     <>
       {/* <Container maxWidth="md" sx={{ mt: 20 }}>
