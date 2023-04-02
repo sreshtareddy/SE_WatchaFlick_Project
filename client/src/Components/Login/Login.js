@@ -50,6 +50,7 @@ const Login = () => {
       console.log(response.data);
     } catch (error) {
       setErrMsg(error.response.data);
+      setTimeout(() => { setErrMsg("") }, 3000);
       console.log(errMsg);
     }
   };
@@ -74,7 +75,7 @@ const Login = () => {
         </section>
       ) : (
         <section className='c-lg-main-item'>
-          <p>{errMsg}</p>
+          <p className={errMsg[Object.keys(errMsg)[0]] ? 'errorMsg' : "offscreen"}>{errMsg[Object.keys(errMsg)[0]]}</p>
           <form className='c-lg-form' onSubmit={handleSubmit}>
             <div className='c-lg-form-item'>
               <label className='c-lg-label' htmlFor="username">EMAIL/MOBILE:</label>
