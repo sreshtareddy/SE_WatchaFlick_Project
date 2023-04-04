@@ -3,6 +3,9 @@ import "@fontsource/inter";
 import axios from "axios"
 import "./Register.css"
 import { Button } from '../Common/Button';
+import {Container, Row, Col, Form, FormGroup} from 'react-bootstrap'; 
+import {Link} from 'react-router-dom';
+import NavBarSimple from '../Customers/NavBarSimple.js';
 
 function Register() {
 
@@ -76,57 +79,87 @@ function Register() {
     };
 
     return (
-        <section className='reg-section'>
-            <main className='reg-main'>
-                <p className={err[Object.keys(err)[0]] ? 'errorMsg' : "offscreen"}>{err[Object.keys(err)[0]]}</p>
-                <form className='reg-form'>
-                    <div className='reg-formElement'>
-                        <label className='reg-label' htmlFor="firstname">FIRST NAME:</label>
-                        <input className='reg-input' type="text" placeholder="First Name" required id="firstName" onChange={(e) => { handleInputChange(e) }} />
-                    </div>
-                    <div className='reg-formElement'>
-                        <label className='reg-label' htmlFor="lastname">LAST NAME:</label>
-                        <input className='reg-input' type="text" placeholder="Last Name" required id="lastName" onChange={(e) => { handleInputChange(e) }} />
-                    </div>
-                    <div className='reg-formElement'>
-                        <label className='reg-label' htmlFor="email">EMAIL:</label>
-                        <input className='reg-input' type="email" placeholder="Enter Email" required id="email" onChange={(e) => { handleInputChange(e) }} />
-                    </div>
-                    <p id="errNote" className={isValidEmail ? "offscreen" : "instructions"}>
+        <>
+         <NavBarSimple/>
+        <div className="card-wrapper">
+    <div className="card">
+            <h2>Register</h2>
+            <Form >
+            <p className={err[Object.keys(err)[0]] ? 'errorMsg' : "offscreen"}>{err[Object.keys(err)[0]]}</p>
+            <label htmlFor="firstname">First Name</label>
+        <input type="text"  className="field" placeholder="Enter First Name" 
+                  id="firstName"
+                  autoComplete="off"
+                  onChange={(e) => { handleInputChange(e) }} 
+                  required />
+ <label htmlFor="lastname">Last Name</label>
+<input type="text"  className="field" placeholder="Enter Last Name" 
+                  id="lastName"
+                  autoComplete="off"
+                  onChange={(e) => { handleInputChange(e) }} 
+                  required />
+
+<label htmlFor="email">Email</label>
+<input type="text"  className="field" placeholder="Enter Email" 
+                  id="email"
+                  autoComplete="off"
+                  onChange={(e) => { handleInputChange(e) }} 
+                  required />
+                  <p id="errNote" className={isValidEmail ? "offscreen" : "instructions"}>
                         INVALID EMAIL!!!
                     </p>
-                    <div className='reg-formElement'>
-                        <label className='reg-label' htmlFor="password">PASSWORD:</label>
-                        <input className='reg-input' type="password" placeholder="Enter Password" required id="password" onChange={(e) => { handleInputChange(e) }} onFocus={(e) => { handleInputChange(e) }} />
-                    </div>
-                    <p id="errNote" className={isValidPwd ? "offscreen" : "instructions"}>
+
+<label htmlFor="password">Password</label>
+<input type="password"  className="field" placeholder="Enter Password" 
+                  id="password"
+                  autoComplete="off"
+                  onChange={(e) => { handleInputChange(e) }} 
+                  onFocus={(e) => { handleInputChange(e) }}
+                  required />
+                  <p id="errNote" className={isValidPwd ? "offscreen" : "instructions"}>
                         8 to 24 characters.<br />
                         Must include uppercase and lowercase letters, a number and a special character.<br />
                         Allowed special characters: <span aria-label="exclamation mark">!</span> <span aria-label="at symbol">@</span> <span aria-label="hashtag">#</span> <span aria-label="dollar sign">$</span> <span aria-label="percent">%</span>
                     </p>
-                    <div className='reg-formElement'>
-                        <label className='reg-label' htmlFor="confirmPassword">CONFIRM PASSWORD:</label>
-                        <input className='reg-input' type="password" placeholder="Confirm Password" required id="confirmPassword" onChange={(e) => { handleInputChange(e) }} onFocus={(e) => { handleInputChange(e) }} />
-                    </div>
-                    <p id="errNote" className={isValidConfirmPwd ? "offscreen" : "instructions"}>
+
+        <label htmlFor="confirmPassword">Confirm Password</label>
+        <input type="password"  className="field" placeholder="ReEnter Password" 
+                  id="confirmPassword"
+                  autoComplete="off"
+                  onChange={(e) => { handleInputChange(e) }} 
+                  onFocus={(e) => { handleInputChange(e) }}
+                  required />
+                  <p id="errNote" className={isValidConfirmPwd ? "offscreen" : "instructions"}>
                         PASSWORDS DON'T MATCH!!!
                     </p>
-                    <div className='reg-formElement'>
-                        <label className='reg-label' htmlFor="mobile">MOBILE NUMBER:</label>
-                        <input className='reg-input' type="text" placeholder="Enter Mobile" required id="mobile" onChange={(e) => { handleInputChange(e) }} />
-                    </div>
-                    <br></br>
-                    <div className='reg-formElement'>
-                        <Button className='reg-input' type="submit" required id="reg-submit" onClick={handleClick}>SUBMIT</Button>
-                    </div>
 
-                    <div className='reg-formElement'>
-                        <Button url="../login"><p>ALREADY HAVE AN ACCOUNT?</p></Button>
-                    </div>
+                  
+<label htmlFor="mobile">Enter Mobile Number</label>
+<input type="text"  className="field" placeholder="Mobile Number" 
+                  id="mobile"
+                  autoComplete="off"
+                  onChange={(e) => { handleInputChange(e) }} 
+                  required />
 
-                </form>
-            </main>
-        </section>
+
+        <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
+        <Button
+                className="btn secondary__btn auth__btn"
+                type="submit"
+                id="reg-submit"
+                buttonstyle='btn--outline'
+                buttonsize='btn--large'
+                onClick={handleClick} 
+              >
+                Submit
+              </Button>
+              </div>
+      </Form>
+      <p ><Link to='/login'>Already Have an Account?  </Link></p>
+           
+    </div>
+  </div>
+  </>
     );
 }
 

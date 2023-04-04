@@ -23,7 +23,7 @@ const Search = styled('div')(({ theme }) => ({
   '&:hover': {
     backgroundColor: alpha(theme.palette.common.white, 0.25),
   },
-  marginLeft: 0,
+  marginLeft: '60px',
   width: '100%',
   [theme.breakpoints.up('sm')]: {
     marginLeft: theme.spacing(1),
@@ -58,9 +58,10 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+const setting = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 function NavCustomerMainBar() {
+  
   const [anchorElNav, setAnchorElNav] = useState('');
   const [anchorElUser, setAnchorElUser] = useState('');
   const [userName, setUserName] = useState("")
@@ -106,7 +107,7 @@ function NavCustomerMainBar() {
               textDecoration: 'none',
             }}
           >
-            WatchaFlick
+            WatchaFlick 
           </Typography> 
           <Box
         component="img"
@@ -114,7 +115,9 @@ function NavCustomerMainBar() {
         alt="Logo"
         src="/images/logo.png"
       />
+<div>
 
+  </div>
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <IconButton
               size="large"
@@ -181,7 +184,7 @@ function NavCustomerMainBar() {
               <SearchIcon />
             </SearchIconWrapper>
             <StyledInputBase
-              placeholder="Search for the Movie or any Entertainment"
+              placeholder="Search Movie"
               inputProps={{ 'aria-label': 'search' }}
             />
           </Search>
@@ -190,7 +193,7 @@ function NavCustomerMainBar() {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-              <Avatar alt="Remy Sharp" src="images/ava-2.jpg" />
+              <Avatar alt="Remy Sharp" src="images/user1.png" />
               </IconButton>
             </Tooltip>
             <Menu
@@ -209,7 +212,7 @@ function NavCustomerMainBar() {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-             {settings.map((setting, index) => (
+             {setting.map((setting, index) => (
   <MenuItem key={index} onClick={setting === 'Logout' ? handleLogout : handleCloseUserMenu}>
     <Typography textAlign="center">{setting}</Typography>
   </MenuItem>

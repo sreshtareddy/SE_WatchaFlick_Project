@@ -1,7 +1,8 @@
 import React from 'react'
 import CustomerMainSection from './CustomerMainSection';
 import NavCustomerMainBar from './NavCustomerMainBar';
-function CustomerHomeLanding(props) {
+function CustomerHomeLanding() {
+ 
   return (
     <div>
         <NavCustomerMainBar />

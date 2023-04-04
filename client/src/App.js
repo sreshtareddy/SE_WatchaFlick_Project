@@ -5,6 +5,7 @@ import Login from './Components/Login/Login';
 import Register from './Components/Register/Register';
 import { BrowserRouter as Router, Routes ,Route } from 'react-router-dom';
 import CustomerHome from './Components/Customers/CustomerHome';
+import CustomerHomeLanding from './Components/Customers/CustomerHomeLanding';
 import { gapi } from "gapi-script";
 
 // React slick css
@@ -36,6 +37,7 @@ function App() {
         <Route path='/customerHome' element={<CustomerHome/>}/>
         <Route path='/login' element={<Login/>} />
         <Route path='/register' element={<Register/>} />  
+        <Route path='/customerMainHome' element={<CustomerHomeLanding/>}/>
         </Routes>
       </Router>
     </>

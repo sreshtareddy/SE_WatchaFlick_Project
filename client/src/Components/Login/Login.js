@@ -1,18 +1,24 @@
 import { useState } from 'react';
 import { GoogleLogin } from 'react-google-login';
 import FacebookLogin from 'react-facebook-login';
+import NavBarSimple from '../Customers/NavBarSimple.js';
+import {Container, Row, Col, Form, FormGroup} from 'react-bootstrap'; 
+import { Navigate } from "react-router-dom";
+import CustomerHome from '../Customers/CustomerHome.js'
 import axios from 'axios';
-import { Button } from "../Common/Button";
+import {Link} from 'react-router-dom';
 import "./Login.css";
+import { FaGoogle } from 'react-icons/fa';
+import { Button } from '../Common/Button';
 import "@fontsource/inter"
 
 const Login = () => {
-
 
   const [user, setUser] = useState('');
   const [pwd, setPwd] = useState('');
   const [errMsg, setErrMsg] = useState('');
   const [success, setSuccess] = useState(false);
+  const [userName, setUserName] = useState("");
 
   const handleUsernameChange = (event) => {
     setUser(event.target.value);
@@ -21,7 +27,6 @@ const Login = () => {
   const handlePasswordChange = (event) => {
     setPwd(event.target.value);
   };
-
 
 
   const clientId = '973282407747-5e4l7ut9st7c6aqace5d1avdjcjp8o3s.apps.googleusercontent.com';
@@ -47,11 +52,12 @@ const Login = () => {
         emailormobile: user, password: pwd
       });
       setSuccess(true);
-      console.log(response.data);
+      setUserName(response.data.user.first_name)
+      console.log(userName)
     } catch (error) {
       setErrMsg(error.response.data);
-      setTimeout(() => { setErrMsg("") }, 3000);
-      console.log(errMsg);
+      console.log(error.response.data);
+
     }
   };
 
@@ -67,94 +73,77 @@ const Login = () => {
   };
 
   return (
+    <>
+      {/* <NavCustomerBar/> */}
+    
     <main className='c-lg-main'>
       {success ? (
-        <section className='c-lg-main-item'>
-          <h1>You are logged in!</h1>
-          <a className='c-lg-link-item' href="/">Go to Home</a>
-        </section>
+        <>
+        <Navigate replace to="/customerMainHome"/>
+         <h1>Welcome, {userName}!</h1>
+        </>
       ) : (
-        <section className='c-lg-main-item'>
-          <p className={errMsg[Object.keys(errMsg)[0]] ? 'errorMsg' : "offscreen"}>{errMsg[Object.keys(errMsg)[0]]}</p>
-          <form className='c-lg-form' onSubmit={handleSubmit}>
-            <div className='c-lg-form-item'>
-              <label className='c-lg-label' htmlFor="username">EMAIL/MOBILE:</label>
-              <input
-                className='c-lg-input'
-                type="text"
-                id="username"
-                autoComplete="off"
-                onChange={handleUsernameChange}
-                value={user}
-                required
-              />
-            </div>
-            <div className='c-lg-form-item'>
-              <label className='c-lg-label' htmlFor="password">PASSWORD:</label>
-              <input
-                className='c-lg-input'
-                type="password"
-                id="password"
-                onChange={handlePasswordChange}
-                value={pwd}
-                required
-              />
-            </div>
-            <div className='c-lg-form-item'>
-
-              <Button type='button'
-                className='btns'
-                buttonStyle='btn--outline'
-                buttonSize='btn--large'
-                onClick={handleSubmit}
+        <>
+       <NavBarSimple/>
+       <div className="card-wrapper">
+    <div className="card">
+            <h2>Login</h2>
+            <Form onSubmit={handleSubmit}>
+        <label htmlFor="email">Email</label>
+        <input type="text"  className="field" placeholder="Enter email" 
+                  id="username"
+                  autoComplete="off"
+                  onChange={handleUsernameChange}
+                  value={user}
+                  required />
+        
+        <label htmlFor="password">Password</label>
+        <input type="password" className="field" placeholder="Enter password" 
+        type="password"
+        id="password"
+        onChange={handlePasswordChange}
+        value={pwd}
+        
+        required />
+        <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
+        <Button
+                className="btn secondary__btn auth__btn"
+                buttonstyle='btn--outline'
+                buttonsize='btn--large'
+                onClick={handleSubmit} 
               >
-                SIGN IN
+                Login
               </Button>
-            </div>
-          </form>
+              </div>
+      </Form>
+      <p >Don't have an account? <Link to='/register'> Create</Link></p>
+            <FormGroup>
+              <div className='btn secondary__btn auth__btn'>
+                <GoogleLogin
+                  clientId={clientId}
+                  buttonText="Login"
+                  onSuccess={onSuccess}
+                  cookiePolicy={'single_host_origin'}
+                  isSignedIn={true}
+                ></GoogleLogin>
+               
+                <FacebookLogin
+                  appId="1829736540733671"
+                  autoLoad={false}
+                  fields="name,email,picture"
+                  callback={responseFacebook}
+                />
+              </div>
+            </FormGroup>
+    </div>
+  </div>
 
-          <div className='c-lg-nac'>
-            <p className='c-lg-nac-item'>
-              Need an Account?
-            </p>
-            <div className='c-lg-nac-item'>
-              <Button type='button'
-                className='btns'
-                buttonStyle='btn--outline'
-                buttonSize='btn--large'
-                url="../register"
-              >
-                SIGN UP
-              </Button>
-            </div>
-          </div>
-          
-
-          <div className='c-lg-tp-buttons'>
-            <p>LOGIN WITH GOOGLE: </p>
-            <div className='c-lg-auth-button'>
-              <GoogleLogin
-                clientId={clientId}
-                buttonText="Login"
-                onSuccess={onSuccess}
-                cookiePolicy={'single_host_origin'}
-                isSignedIn={true}
-              />
-            </div>
-            <p>LOGIN WITH FB: </p>
-            <div className='c-lg-auth-button'>
-              <FacebookLogin
-                appId="1829736540733671"
-                autoLoad={false}
-                fields="name,email,picture"
-                callback={responseFacebook}
-              />
-            </div>
-          </div>
-        </section>
+       </>
       )}
     </main>
+    </>
   )
+  
 }
 
 export default Login
