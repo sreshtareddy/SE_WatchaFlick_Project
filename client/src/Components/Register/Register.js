@@ -6,6 +6,7 @@ import { Button } from '../Common/Button';
 import {Container, Row, Col, Form, FormGroup} from 'react-bootstrap'; 
 import {Link} from 'react-router-dom';
 import NavBarSimple from '../Customers/NavBarSimple.js';
+import { Navigate } from "react-router-dom";
 
 function Register() {
 
@@ -25,10 +26,13 @@ function Register() {
     const [isValidEmail, setIsValidEmail] = useState(true)
     const [isValidConfirmPwd, setIsValidConfPwd] = useState(true)
     const [err, setErrMsg] = useState("")
+    const [regSuccess, setRegSuccess] = useState(false)
+
 
     const handleClick = e => {
         e.preventDefault();
         axios.post("http://localhost:3000/api/users/register", { first_name: credentials.firstName, last_name: credentials.lastName, password: credentials.password, email: credentials.email, password2: credentials.password2, mobile: credentials.mobile }).then(response => { setErrMsg(null); }).catch(error => { if (error.response.status !== 200) { setErrMsg(error.response.data); } });
+        axios.post("http://localhost:3000/api/users/register", { first_name: credentials.firstName, last_name: credentials.lastName, password: credentials.password, email: credentials.email, password2: credentials.password2, mobile: credentials.mobile }).then(response => { setRegSuccess(true); }).catch(error => { if (error.response.status !== 200) { setErrMsg(error.response.data); } });
         console.log(err[Object.keys(err)[0]]);
         setTimeout(() => { setErrMsg("") }, 3000);
     }
@@ -80,6 +84,13 @@ function Register() {
 
     return (
         <>
+        <main className='c-lg-main'>
+            {regSuccess ? (
+                <>
+            <Navigate replace to="/login"/>
+                    </>
+                    ) : (
+          <>             
          <NavBarSimple/>
         <div className="card-wrapper">
     <div className="card">
@@ -159,6 +170,9 @@ function Register() {
            
     </div>
   </div>
+  </>
+   )}
+   </main>
   </>
     );
 }
