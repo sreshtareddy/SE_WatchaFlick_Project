@@ -31,11 +31,11 @@ function Register() {
 
     const handleClick = e => {
         e.preventDefault();
-        axios.post("http://localhost:3000/api/users/register", { first_name: credentials.firstName, last_name: credentials.lastName, password: credentials.password, email: credentials.email, password2: credentials.password2, mobile: credentials.mobile }).then(response => { setErrMsg(null); }).catch(error => { if (error.response.status !== 200) { setErrMsg(error.response.data); } });
         axios.post("http://localhost:3000/api/users/register", { first_name: credentials.firstName, last_name: credentials.lastName, password: credentials.password, email: credentials.email, password2: credentials.password2, mobile: credentials.mobile }).then(response => { setRegSuccess(true); }).catch(error => { if (error.response.status !== 200) { setErrMsg(error.response.data); } });
         console.log(err[Object.keys(err)[0]]);
         setTimeout(() => { setErrMsg("") }, 3000);
     }
+
 
     const handleInputChange = e => {
         const id = e.target.id;
