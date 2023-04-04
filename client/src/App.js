@@ -11,6 +11,7 @@ import { gapi } from "gapi-script";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "@fontsource/inter";
+import ForgotPassword from './Components/Login/ForgotPassword';
 
 const clientId = "973282407747-5e4l7ut9st7c6aqace5d1avdjcjp8o3s.apps.googleusercontent.com";
 
@@ -36,6 +37,7 @@ function App() {
         <Route path='/customerHome' element={<CustomerHome/>}/>
         <Route path='/login' element={<Login/>} />
         <Route path='/register' element={<Register/>} />  
+        <Route path='/forgotpassword' element={<ForgotPassword/>}/>
         </Routes>
       </Router>
     </>
