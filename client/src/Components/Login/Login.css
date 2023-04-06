@@ -34,8 +34,8 @@
   
   /* Cards */
   .card-wrapper {
-  background-image: url('C:\Users\sresh\Desktop\github_watchaflick\P565-SP23-Team19-Frontend\client\public\images\photo2.jpg');
-  background-position: center;
+  background-image: url('../../../public/images/photo2.jpg');
+  background-position: center; 
   background-size: cover;
   background-repeat: no-repeat;
   padding: 0.85%;

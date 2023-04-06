@@ -99,7 +99,6 @@ const Login = () => {
         
         <label htmlFor="password">Password</label>
         <input type="password" className="field" placeholder="Enter password" 
-        type="password"
         id="password"
         onChange={handlePasswordChange}
         value={pwd}
