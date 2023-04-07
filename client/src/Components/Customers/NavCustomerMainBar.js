@@ -61,15 +61,15 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 const setting = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 function NavCustomerMainBar() {
-  
+
   const [anchorElNav, setAnchorElNav] = useState('');
   const [anchorElUser, setAnchorElUser] = useState('');
   const [userName, setUserName] = useState("")
 
-  const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
+  const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
-  const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
+  const handleOpenUserMenu = (event) => {
     setAnchorElUser(event.currentTarget);
   };
 
@@ -85,7 +85,7 @@ function NavCustomerMainBar() {
     window.location.href = '/CustomerHome'; // Replace with your desired page URL
   };
 
-  
+
 
   return (
     <AppBar position="static" sx={{ backgroundColor: 'black' }}>
@@ -107,17 +107,17 @@ function NavCustomerMainBar() {
               textDecoration: 'none',
             }}
           >
-            WatchaFlick 
-          </Typography> 
+            WatchaFlick
+          </Typography>
           <Box
-        component="img"
-        sx={{ width:45, height:50 }}
-        alt="Logo"
-        src="/images/logo.png"
-      />
-<div>
+            component="img"
+            sx={{ width: 45, height: 50 }}
+            alt="Logo"
+            src="/images/logo.png"
+          />
+          <div>
 
-  </div>
+          </div>
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <IconButton
               size="large"
@@ -147,19 +147,19 @@ function NavCustomerMainBar() {
                 display: { xs: 'block', md: 'none' },
               }}
             > <span> &nbsp;    </span>
-               <Search>
-            <SearchIconWrapper>
-              <SearchIcon />
-            </SearchIconWrapper>
-            <StyledInputBase
-              placeholder="Search…"
-              inputProps={{ 'aria-label': 'search' }}
-            />
-          </Search>
+              <Search>
+                <SearchIconWrapper>
+                  <SearchIcon />
+                </SearchIconWrapper>
+                <StyledInputBase
+                  placeholder="Search…"
+                  inputProps={{ 'aria-label': 'search' }}
+                />
+              </Search>
             </Menu>
           </Box>
-          
-          
+
+
           <Typography
             variant="h5"
             noWrap
@@ -179,21 +179,21 @@ function NavCustomerMainBar() {
             WatchaFlick
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-          <Search>
-            <SearchIconWrapper>
-              <SearchIcon />
-            </SearchIconWrapper>
-            <StyledInputBase
-              placeholder="Search Movie"
-              inputProps={{ 'aria-label': 'search' }}
-            />
-          </Search>
+            <Search>
+              <SearchIconWrapper>
+                <SearchIcon />
+              </SearchIconWrapper>
+              <StyledInputBase
+                placeholder="Search Movie"
+                inputProps={{ 'aria-label': 'search' }}
+              />
+            </Search>
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-              <Avatar alt="Remy Sharp" src="images/user1.png" />
+                <Avatar alt="Remy Sharp" src="images/user1.png" />
               </IconButton>
             </Tooltip>
             <Menu
@@ -212,11 +212,11 @@ function NavCustomerMainBar() {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-             {setting.map((setting, index) => (
-  <MenuItem key={index} onClick={setting === 'Logout' ? handleLogout : handleCloseUserMenu}>
-    <Typography textAlign="center">{setting}</Typography>
-  </MenuItem>
-))}
+              {setting.map((setting, index) => (
+                <MenuItem key={index} onClick={setting === 'Logout' ? handleLogout : handleCloseUserMenu}>
+                  <Typography textAlign="center">{setting}</Typography>
+                </MenuItem>
+              ))}
             </Menu>
           </Box>
         </Toolbar>
