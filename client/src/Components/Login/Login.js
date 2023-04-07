@@ -2,11 +2,11 @@ import { useState } from 'react';
 import { GoogleLogin } from 'react-google-login';
 import FacebookLogin from 'react-facebook-login';
 import NavBarSimple from '../Customers/NavBarSimple.js';
-import {Container, Row, Col, Form, FormGroup} from 'react-bootstrap'; 
+import { Container, Row, Col, Form, FormGroup } from 'react-bootstrap';
 import { Navigate } from "react-router-dom";
 import CustomerHome from '../Customers/CustomerHome.js'
 import axios from 'axios';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import "./Login.css";
 import { FaGoogle } from 'react-icons/fa';
 import { Button } from '../Common/Button';
@@ -75,74 +75,74 @@ const Login = () => {
   return (
     <>
       {/* <NavCustomerBar/> */}
-    
-    <main className='c-lg-main'>
-      {success ? (
-        <>
-        <Navigate replace to="/customerMainHome"/>
-         <h1>Welcome, {userName}!</h1>
-        </>
-      ) : (
-        <>
-       <NavBarSimple/>
-       <div className="card-wrapper">
-    <div className="card">
-            <h2>Login</h2>
-            <Form onSubmit={handleSubmit}>
-        <label htmlFor="email">Email</label>
-        <input type="text"  className="field" placeholder="Enter email" 
-                  id="username"
-                  autoComplete="off"
-                  onChange={handleUsernameChange}
-                  value={user}
-                  required />
-        
-        <label htmlFor="password">Password</label>
-        <input type="password" className="field" placeholder="Enter password" 
-        id="password"
-        onChange={handlePasswordChange}
-        value={pwd}
-        
-        required />
-        <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
-        <Button
-                className="btn secondary__btn auth__btn"
-                buttonstyle='btn--outline'
-                buttonsize='btn--large'
-                onClick={handleSubmit} 
-              >
-                Login
-              </Button>
-              </div>
-      </Form>
-      <p >Don't have an account? <Link to='/register'> Create</Link></p>
-            <FormGroup>
-              <div className='btn secondary__btn auth__btn'>
-                <GoogleLogin
-                  clientId={clientId}
-                  buttonText="Login"
-                  onSuccess={onSuccess}
-                  cookiePolicy={'single_host_origin'}
-                  isSignedIn={true}
-                ></GoogleLogin>
-               
-                <FacebookLogin
-                  appId="1829736540733671"
-                  autoLoad={false}
-                  fields="name,email,picture"
-                  callback={responseFacebook}
-                />
-              </div>
-            </FormGroup>
-    </div>
-  </div>
 
-       </>
-      )}
-    </main>
+      <main className='c-lg-main'>
+        {success ? (
+          <>
+            <Navigate replace to="/customerMainHome" />
+            <h1>Welcome, {userName}!</h1>
+          </>
+        ) : (
+          <>
+            <NavBarSimple />
+            <div className="card-wrapper">
+              <div className="card">
+                <h2>Login</h2>
+                <Form onSubmit={handleSubmit}>
+                  <label className='lg-label' htmlFor="email">Email</label>
+                  <input type="text" className="field" placeholder="Enter email"
+                    id="username"
+                    autoComplete="off"
+                    onChange={handleUsernameChange}
+                    value={user}
+                    required />
+
+                  <label className='lg-label' htmlFor="password">Password</label>
+                  <input type="password" className="field" placeholder="Enter password"
+                    id="password"
+                    onChange={handlePasswordChange}
+                    value={pwd}
+                    required />
+                  <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
+                    <Button
+                      className="btn secondary__btn auth__btn"
+                      buttonstyle='btn--outline'
+                      buttonsize='btn--large'
+                      onClick={handleSubmit}
+                    >
+                      Login
+                    </Button>
+                  </div>
+                </Form>
+                <p >Don't have an account? <Link to='/register'> Create</Link></p>
+                <Link to='../forgotPassword'><p >Forgot Password ?</p></Link>
+                <FormGroup>
+                  <div className='btn_secondary__btn_auth__btn'>
+                    <GoogleLogin
+                      clientId={clientId}
+                      buttonText="Login"
+                      onSuccess={onSuccess}
+                      cookiePolicy={'single_host_origin'}
+                      isSignedIn={true}
+                    ></GoogleLogin>
+
+                    <FacebookLogin
+                      appId="1829736540733671"
+                      autoLoad={false}
+                      fields="name,email,picture"
+                      callback={responseFacebook}
+                    />
+                  </div>
+                </FormGroup>
+              </div>
+            </div>
+
+          </>
+        )}
+      </main>
     </>
   )
-  
+
 }
 
 export default Login
