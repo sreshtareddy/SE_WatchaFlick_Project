@@ -39,7 +39,10 @@ const Login = () => {
       });
       console.log("Login Success! User:", res.profileObj);
       console.log(google_response);
+
     } catch (error) {
+      setErrMsg(error.data.mesage);
+      setTimeout(()=> {setErrMsg("")}, 3000);
       console.log("Login Failed! res=", error)
     }
   }
@@ -56,6 +59,7 @@ const Login = () => {
       console.log(userName)
     } catch (error) {
       setErrMsg(error.response.data);
+      setTimeout(()=> {setErrMsg("")}, 3000);
       console.log(error.response.data);
 
     }
@@ -68,6 +72,8 @@ const Login = () => {
       });
       console.log(facebook_response);
     } catch (error) {
+      setErrMsg(error.data.mesage);
+      setTimeout(()=> {setErrMsg("")}, 3000);
       console.log(error.response);
     }
   };
@@ -88,7 +94,10 @@ const Login = () => {
             <div className="card-wrapper">
               <div className="card">
                 <h2>Login</h2>
+                
                 <Form onSubmit={handleSubmit}>
+                  <p className='error' htmlFor="error">{errMsg[Object.keys(errMsg)[0]]}</p>
+
                   <label className='lg-label' htmlFor="email">Email</label>
                   <input type="text" className="field" placeholder="Enter email"
                     id="username"
