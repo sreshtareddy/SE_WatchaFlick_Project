@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Routes ,Route } from 'react-router-dom';
 import CustomerHome from './Components/Customers/CustomerHome';
 import CustomerHomeLanding from './Components/Customers/CustomerHomeLanding';
 import { gapi } from "gapi-script";
+import MovieHome from './Components/MovieDisplay/MovieHome';
 
 // React slick css
 import "slick-carousel/slick/slick.css";
@@ -38,6 +39,7 @@ function App() {
         <Route path='/login' element={<Login/>} />
         <Route path='/register' element={<Register/>} />  
         <Route path='/customerMainHome' element={<CustomerHomeLanding/>}/>
+        <Route path='/homeTry' element={<MovieHome/>}/>
         </Routes>
       </Router>
     </>

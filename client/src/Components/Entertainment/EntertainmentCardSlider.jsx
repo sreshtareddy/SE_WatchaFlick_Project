@@ -1,10 +1,27 @@
 import React from "react";
 import Slider from "react-slick";
+import Modal from '@mui/material/Modal';
+import { useState } from 'react';
+import { Typography, Button } from '@mui/material';
+import Box from '@mui/material/Box';
+
+const style = {
+  position: 'absolute' ,
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  width: 400,
+  bgcolor: 'background.paper',
+  border: '2px solid #000',
+  boxShadow: 24,
+  p: 4,
+};
+
 
 const EntertainmentCard = (props) => {
   return (
     <>
-      <div className="w-full h-30 px-2">
+      <div className="w-full h-30 px-2" >
         <img
           className="w-full h-full rounded-lg"
           src={props.src}
@@ -16,8 +33,17 @@ const EntertainmentCard = (props) => {
 };
 
 const EntertainmentCardSlider = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleImageClick = () => {
+    setIsModalOpen(true);
+  };
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
+  
   const EntertainmentImage = [
-    // "https://in.bmscdn.com/discovery-catalog/collections/tr:w-800,h-800:ote-MTI1KyBFdmVudHM%3D,otc-FFFFFF,otf-Roboto,ots-64,ox-48,oy-320,ott-b:w-300/workshops-collection-202007231330.png",
+    //"https://in.bmscdn.com/discovery-catalog/collections/tr:w-800,h-800:ote-MTI1KyBFdmVudHM%3D,otc-FFFFFF,otf-Roboto,ots-64,ox-48,oy-320,ott-b:w-300/workshops-collection-202007231330.png",
     // "https://in.bmscdn.com/discovery-catalog/collections/tr:w-800,h-800:ote-OSBFdmVudHM%3D,otc-FFFFFF,otf-Roboto,ots-64,ox-48,oy-320,ott-b:w-300/fitness-collection-2020081150.png",
     // "https://in.bmscdn.com/discovery-catalog/collections/tr:w-800,h-800:ote-MjArIEV2ZW50cw%3D%3D,otc-FFFFFF,otf-Roboto,ots-64,ox-48,oy-320,ott-b:w-300/kids-collection-202007220710.png",
     // "https://in.bmscdn.com/discovery-catalog/collections/tr:w-800,h-800:ote-NDArIEV2ZW50cw%3D%3D,otc-FFFFFF,otf-Roboto,ots-64,ox-48,oy-320,ott-b:w-300/comedy-shows-collection-202007220710.png",
@@ -77,11 +103,37 @@ const EntertainmentCardSlider = () => {
 
   return (
     <>
+      
       <Slider {...settings}>
-        {EntertainmentImage.map((image, index) => (
-          <EntertainmentCard src={image} key={index} />
-        ))}
-      </Slider>
+  {EntertainmentImage.map((image, index) => (
+    <div key={index} onClick={handleImageClick}>
+      <EntertainmentCard src={image} alt={image.alt} />
+    </div>
+  ))}
+  {
+    <Modal open={isModalOpen} onClose={handleCloseModal}>
+      <div>
+      <Box sx={style}>
+          <Typography id="modal-modal-title" variant="h6" component="h2">
+            Text in a modal
+          </Typography>
+          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+            Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
+          </Typography>
+          <Button size="small" variant="contained" color="primary">
+              Book Ticket
+            </Button>
+            <Button size="small" variant="contained" color="secondary">
+              More Information
+            </Button>
+        </Box>
+    
+    
+    </div>
+  </Modal>
+  }
+</Slider>
+      
     </>
   );
 };

@@ -4,7 +4,7 @@ import FacebookLogin from 'react-facebook-login';
 import NavBarSimple from '../Customers/NavBarSimple.js';
 import {Container, Row, Col, Form, FormGroup} from 'react-bootstrap'; 
 import { Navigate } from "react-router-dom";
-import CustomerHome from '../Customers/CustomerHome.js'
+import CustomerHome from '../Customers/CustomerHome.js';
 import axios from 'axios';
 import {Link} from 'react-router-dom';
 import "./Login.css";
@@ -74,11 +74,11 @@ const Login = () => {
 
   return (
     <>
-      {/* <NavCustomerBar/> */}
-    
+
     <main className='c-lg-main'>
       {success ? (
         <>
+        
         <Navigate replace to="/customerMainHome"/>
          <h1>Welcome, {userName}!</h1>
         </>

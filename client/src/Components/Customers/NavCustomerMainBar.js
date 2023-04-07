@@ -82,7 +82,7 @@ function NavCustomerMainBar() {
   };
 
   const handleLogout = () => {
-    window.location.href = '/login'; // Replace with your desired page URL
+    window.location.href = '/CustomerHome'; // Replace with your desired page URL
   };
 
   
