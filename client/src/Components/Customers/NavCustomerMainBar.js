@@ -84,7 +84,6 @@ function NavCustomerMainBar({ userName }) {
 
 
   const handleLogout = () => {
-    
         window.location.href = '/';
      
   };
@@ -92,7 +91,8 @@ function NavCustomerMainBar({ userName }) {
 
 
   return (
-    <AppBar position="static" sx={{ backgroundColor: 'black' }}>
+    <>
+    <AppBar position="fixed" sx={{ backgroundColor: 'black' }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
 
@@ -228,6 +228,8 @@ function NavCustomerMainBar({ userName }) {
         </Toolbar>
       </Container>
     </AppBar>
+  
+    </>
   );
 }
 export default NavCustomerMainBar;

@@ -433,7 +433,7 @@ const HeroCarousel = () => {
 
   return (
     <>
-      <div className="lg:hidden">
+      <div className="lg:hidden" >
         <HeroSlider {...settings}>
           {images.map((images, index) => (
             <div className="w-full h-20 md:h-80 py-3" key={index}>
