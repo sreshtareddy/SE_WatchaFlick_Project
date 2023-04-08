@@ -53,10 +53,9 @@ function Footer() {
         <div className='social-media-wrap'>
             <div className='navbar-container'>
             <Link to='/' className='navbar-logo'>
-              WatchaFlick <span> &nbsp;&nbsp;    </span>
-            
-            <img src="images/logo.png" alt="logo" width={50} height={50} />
-            </Link>
+  WatchaFlick <span> &nbsp;&nbsp; </span>
+  <img src="images/logo.png" alt="logo" style={{ width: '50px', height: '50px', objectFit: 'contain' }} />
+</Link>
 
           </div>
           <small className='website-rights'>WatchaFlick © 2023</small>

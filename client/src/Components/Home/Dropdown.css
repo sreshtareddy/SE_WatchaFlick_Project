@@ -1,11 +1,10 @@
 .dropdown-menu {
-    width: 200px;
-    position: absolute;
-    top: 80px;
-    list-style: none;
-    text-align: start;
-  }
-  
+  width: 250px;
+  position: absolute;
+  top: 100%; /* Position below the parent element */
+  left: 0;
+  list-style: none;
+}
   .dropdown-menu li {
     background: #FFBF00;
     cursor: pointer;

@@ -5,7 +5,11 @@ import CardItem from './CardItem';
 function Cards() {
   return (
     <div className='cards'>
-      <h1>Explore Movie MAGIC Now!</h1>
+    <h1
+  className="text-2xl font-bold text-gray-800 sm:ml-3 ml-0 my-3"
+  style={{ color: "#F8BB16", textShadow: "1px 1px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000" }}>
+  Explore Movie MAGIC Now!
+</h1>
       <div className='cards__container'>
         <div className='cards__wrapper'>
           <ul className='cards__items'>

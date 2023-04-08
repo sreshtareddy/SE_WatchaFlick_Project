@@ -15,6 +15,7 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import SearchIcon from '@mui/icons-material/Search';
+import axios from 'axios';
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -60,11 +61,11 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 const setting = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
-function NavCustomerMainBar() {
+function NavCustomerMainBar({ userName }) {
 
   const [anchorElNav, setAnchorElNav] = useState('');
   const [anchorElUser, setAnchorElUser] = useState('');
-  const [userName, setUserName] = useState("")
+ 
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -81,8 +82,11 @@ function NavCustomerMainBar() {
     setAnchorElUser(null);
   };
 
+
   const handleLogout = () => {
-    window.location.href = '/CustomerHome'; // Replace with your desired page URL
+    
+        window.location.href = '/';
+     
   };
 
 
@@ -107,7 +111,7 @@ function NavCustomerMainBar() {
               textDecoration: 'none',
             }}
           >
-            WatchaFlick
+            WatchaFlick 
           </Typography>
           <Box
             component="img"
@@ -189,7 +193,9 @@ function NavCustomerMainBar() {
               />
             </Search>
           </Box>
-
+          <div>
+      Welcome, {userName}!
+    </div>
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>

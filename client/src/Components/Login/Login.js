@@ -1,10 +1,10 @@
-import { useState } from 'react';
+import { useState, useEffect  } from 'react';
 import { GoogleLogin } from 'react-google-login';
 import FacebookLogin from 'react-facebook-login';
 import NavBarSimple from '../Customers/NavBarSimple.js';
 import { Container, Row, Col, Form, FormGroup } from 'react-bootstrap';
 import { Navigate } from "react-router-dom";
-import CustomerHome from '../Customers/CustomerHome.js'
+import CustomerHomeLanding from "../Customers/CustomerHomeLanding"
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import "./Login.css";
@@ -19,6 +19,10 @@ const Login = () => {
   const [errMsg, setErrMsg] = useState('');
   const [success, setSuccess] = useState(false);
   const [userName, setUserName] = useState("");
+
+  useEffect(() => {
+    console.log(userName);
+  }, [userName]);
 
   const handleUsernameChange = (event) => {
     setUser(event.target.value);
@@ -37,7 +41,9 @@ const Login = () => {
       const google_response = await axios.post('http://localhost:3000/api/users/google_login', {
         idToken: res.tokenObj.id_token
       });
-      console.log("Login Success! User:", res.profileObj);
+     //setSuccess(true);
+      console.log("Login Success! User:", res.profileObj.name);
+      setUserName(res.profileObj.name)
       console.log(google_response);
 
     } catch (error) {
@@ -55,14 +61,17 @@ const Login = () => {
         emailormobile: user, password: pwd
       });
       setSuccess(true);
+      console.log(response.data.token)
+      console.log(response.data.user._id)
       setUserName(response.data.user.first_name)
-      console.log(userName)
+      
     } catch (error) {
       setErrMsg(error.response.data);
       setTimeout(()=> {setErrMsg("")}, 3000);
       console.log(error.response.data);
 
     }
+
   };
 
   async function responseFacebook(response) {
@@ -85,20 +94,22 @@ const Login = () => {
       <main className='c-lg-main'>
         {success ? (
           <>
-            <Navigate replace to="/customerMainHome" />
-            <h1>Welcome, {userName}!</h1>
+            <CustomerHomeLanding userName={userName} />
           </>
         ) : (
           <>
             <NavBarSimple />
             <div className="card-wrapper">
               <div className="card">
-                <h2>Login</h2>
+              <h1
+  className="text-2xl font-bold text-gray-800 sm:ml-3 ml-0 my-3"
+  style={{ color: "#F8BB16" }}
+>Login</h1>
                 
                 <Form onSubmit={handleSubmit}>
                   <p className='error' htmlFor="error">{errMsg[Object.keys(errMsg)[0]]}</p>
 
-                  <label className='lg-label' htmlFor="email">Email</label>
+                  {/* <label className='lg-label' htmlFor="email">Email</label> */}
                   <input type="text" className="field" placeholder="Enter email"
                     id="username"
                     autoComplete="off"
@@ -106,7 +117,7 @@ const Login = () => {
                     value={user}
                     required />
 
-                  <label className='lg-label' htmlFor="password">Password</label>
+                  {/* <label className='lg-label' htmlFor="password">Password</label> */}
                   <input type="password" className="field" placeholder="Enter password"
                     id="password"
                     onChange={handlePasswordChange}
@@ -129,14 +140,15 @@ const Login = () => {
                   <div className='btn_secondary__btn_auth__btn'>
                     <GoogleLogin
                       clientId={clientId}
-                      buttonText="Login"
+                      buttonText="Login with Google"
                       onSuccess={onSuccess}
                       cookiePolicy={'single_host_origin'}
                       isSignedIn={true}
                     ></GoogleLogin>
-
+                  
                     <FacebookLogin
                       appId="1829736540733671"
+                      buttonText="Login with FB"
                       autoLoad={false}
                       fields="name,email,picture"
                       callback={responseFacebook}

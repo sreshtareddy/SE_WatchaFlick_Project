@@ -1,11 +1,11 @@
 import React from 'react'
 import CustomerMainSection from './CustomerMainSection';
 import NavCustomerMainBar from './NavCustomerMainBar';
-function CustomerHomeLanding() {
+function CustomerHomeLanding({ userName }) {
  
   return (
     <div>
-        <NavCustomerMainBar />
+        <NavCustomerMainBar userName={userName} />
         <CustomerMainSection/>
     </div>
   )

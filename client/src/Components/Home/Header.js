@@ -57,6 +57,7 @@ function Header() {
               <i className={click ? 'fas fa-times' : 'fas fa-bars'} />
             </div>
             <ul className={click ? 'nav-menu active' : 'nav-menu'}>
+           
               <li className='nav-item'>
                 <Link to='/' className='nav-links' onClick={closeMobileMenu}>
                   Home
@@ -67,7 +68,7 @@ function Header() {
             onMouseEnter={onMouseEnter}
             onMouseLeave={onMouseLeave}
           >
-            <div>
+           <div style={{ position: "relative" }}>
             <Link
               className='nav-links'
               onClick={closeMobileMenu}
