@@ -4,6 +4,13 @@ import Modal from '@mui/material/Modal';
 import { useState } from 'react';
 import { Typography, Button } from '@mui/material';
 import Box from '@mui/material/Box';
+import {
+  CardActions,
+  Card,
+  CardContent,
+  Rating,
+  Paper,
+} from "@mui/material";
 
 const style = {
   position: 'absolute' ,
@@ -43,18 +50,7 @@ const EntertainmentCardSlider = () => {
   };
   
   const EntertainmentImage = [
-    //"https://in.bmscdn.com/discovery-catalog/collections/tr:w-800,h-800:ote-MTI1KyBFdmVudHM%3D,otc-FFFFFF,otf-Roboto,ots-64,ox-48,oy-320,ott-b:w-300/workshops-collection-202007231330.png",
-    // "https://in.bmscdn.com/discovery-catalog/collections/tr:w-800,h-800:ote-OSBFdmVudHM%3D,otc-FFFFFF,otf-Roboto,ots-64,ox-48,oy-320,ott-b:w-300/fitness-collection-2020081150.png",
-    // "https://in.bmscdn.com/discovery-catalog/collections/tr:w-800,h-800:ote-MjArIEV2ZW50cw%3D%3D,otc-FFFFFF,otf-Roboto,ots-64,ox-48,oy-320,ott-b:w-300/kids-collection-202007220710.png",
-    // "https://in.bmscdn.com/discovery-catalog/collections/tr:w-800,h-800:ote-NDArIEV2ZW50cw%3D%3D,otc-FFFFFF,otf-Roboto,ots-64,ox-48,oy-320,ott-b:w-300/comedy-shows-collection-202007220710.png",
-    // "https://in.bmscdn.com/discovery-catalog/collections/tr:w-800,h-800:ote-NSBFdmVudHM%3D,otc-FFFFFF,otf-Roboto,ots-64,ox-48,oy-320,ott-b:w-300/music-shows-collection-202007220710.png",
-    // "https://in.bmscdn.com/discovery-catalog/collections/tr:w-800,h-800:ote-MTUrIEV2ZW50cw%3D%3D,otc-FFFFFF,otf-Roboto,ots-64,ox-48,oy-320,ott-b:w-300/esports-collection-202011150107.png",
-    // "https://in.bmscdn.com/discovery-catalog/collections/tr:w-800,h-800:ote-OSBFdmVudHM%3D,otc-FFFFFF,otf-Roboto,ots-64,ox-48,oy-320,ott-b:w-300/self-improvement-collection-202007220710.png",
-    // "https://in.bmscdn.com/discovery-catalog/collections/tr:w-800,h-800:w-300/cooking-collection-202007222211.png",
-    // "https://in.bmscdn.com/discovery-catalog/collections/tr:w-800,h-800:ote-MSBFdmVudA%3D%3D,otc-FFFFFF,otf-Roboto,ots-64,ox-48,oy-320,ott-b:w-300/interactive-games-collection-202012041129.png",
-    // "https://in.bmscdn.com/discovery-catalog/collections/tr:w-800,h-800:ote-MTArIEV2ZW50cw%3D%3D,otc-FFFFFF,otf-Roboto,ots-64,ox-48,oy-320,ott-b:w-300/art-and-crafts-collection-202007220710.png",
-    // "https://in.bmscdn.com/discovery-catalog/collections/tr:w-800,h-800:ote-NCBFdmVudHM%3D,otc-FFFFFF,otf-Roboto,ots-64,ox-48,oy-320,ott-b:w-300/theatre-shows-collection-202012041128.png",
-    // "https://in.bmscdn.com/discovery-catalog/collections/tr:w-800,h-800:w-300/adventure-collection-202010140844.png",
+  
     "https://m.media-amazon.com/images/M/MV5BOWZlMjFiYzgtMTUzNC00Y2IzLTk1NTMtZmNhMTczNTk0ODk1XkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_SX300.jpg",
     "https://lumiere-a.akamaihd.net/v1/images/p_antmanquantumania_update_1006_122aeffe.jpeg",
     
@@ -103,7 +99,6 @@ const EntertainmentCardSlider = () => {
 
   return (
     <>
-      
       <Slider {...settings}>
   {EntertainmentImage.map((image, index) => (
     <div key={index} onClick={handleImageClick}>
@@ -113,20 +108,60 @@ const EntertainmentCardSlider = () => {
   {
     <Modal open={isModalOpen} onClose={handleCloseModal}>
       <div>
-      <Box sx={style}>
-          <Typography id="modal-modal-title" variant="h6" component="h2">
-            Text in a modal
-          </Typography>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-          </Typography>
-          <Button size="small" variant="contained" color="primary">
-              Book Ticket
-            </Button>
-            <Button size="small" variant="contained" color="secondary">
-              More Information
-            </Button>
-        </Box>
+      <Paper
+          sx={{
+            position: "absolute",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            width: 1100,
+            bgcolor: "background.paper",
+            boxShadow: 24,
+            p: 4,
+          }}
+        >
+          <Card
+            raised
+            sx={{
+              maxWidth: 1100,
+              display: "flex",
+              padding: "5px",
+              alignItems: "center",
+            }}
+          >
+            
+            <CardContent>
+              <Typography variant="h6">
+                IMBD Rating:{" "}
+                <span style={{ color: "purple" }}>
+                 MovieName
+                </span>
+              </Typography>
+              <Rating
+                name="read-only"
+                
+                readOnly
+              />
+              <Typography gutterBottom variant="h6" component="div">
+                Title
+              </Typography>
+              <Typography gutterBottom>
+                Release Date : 
+              </Typography>
+              <Typography variant="body2" color="text.secondary">
+              
+              </Typography>
+
+              <Button
+            size="small"
+            variant="contained"
+            color="secondary"
+          >
+            Book Tickets
+          </Button>
+            </CardContent>
+          </Card>
+        </Paper>
     
     
     </div>
