@@ -193,7 +193,7 @@ function NavCustomerMainBar() {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="images/user1.png" />
+                <Avatar alt="Remy Sharp" src="images/user2.png" />
               </IconButton>
             </Tooltip>
             <Menu
