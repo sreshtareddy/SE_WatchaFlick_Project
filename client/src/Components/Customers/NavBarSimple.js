@@ -27,11 +27,10 @@ function NavBarSimple() {
     <>
       <nav className='navbar'>
         <div className='navbar-container'>
-          <Link to='/' className='navbar-logo' onClick={closeMobileMenu}>
-            WatchaFlick <span> &nbsp;&nbsp;    </span>
-          
-          <img src="images/logo.png" alt="logo" width={50} height={40} />
-          </Link>
+          <Link to='/' className='navbar-logo' onClick={closeMobileMenu} >
+  WatchaFlick <span> &nbsp;&nbsp; </span>
+  <img src="images/logo.png" alt="logo" style={{ width: '50px', height: '50px', objectFit: 'contain' }} />
+</Link>
           <div className='menu-icon' onClick={handleClick}>
             <i className={click ? 'fas fa-times' : 'fas fa-bars'} />
           </div>
