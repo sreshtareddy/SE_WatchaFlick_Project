@@ -9,5 +9,10 @@ export const MenuItems = [
       title: 'Onsite Management',
       path: '/onsiteManagement',
       cName: 'dropdown-link'
+    },
+    {
+      title: 'Customer Support',
+      path: '/customerSupport',
+      cName: 'dropdown-link'
     }
   ];

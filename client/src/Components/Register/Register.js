@@ -97,20 +97,20 @@ function Register() {
                                 <h2>Register</h2>
                                 <Form >
                                     <p className={err[Object.keys(err)[0]] ? 'errorMsg' : "offscreen"}>{err[Object.keys(err)[0]]}</p>
-                                    <label htmlFor="firstname">First Name</label>
+                                    {/* <label htmlFor="firstname">First Name</label> */}
                                     <input type="text" className="field" placeholder="Enter First Name"
                                         id="firstName"
                                         autoComplete="off"
                                         onChange={(e) => { handleInputChange(e) }}
                                         required />
-                                    <label htmlFor="lastname">Last Name</label>
+                                    {/* <label htmlFor="lastname">Last Name</label> */}
                                     <input type="text" className="field" placeholder="Enter Last Name"
                                         id="lastName"
                                         autoComplete="off"
                                         onChange={(e) => { handleInputChange(e) }}
                                         required />
 
-                                    <label htmlFor="email">Email</label>
+                                    {/* <label htmlFor="email">Email</label> */}
                                     <input type="text" className="field" placeholder="Enter Email"
                                         id="email"
                                         autoComplete="off"
@@ -120,7 +120,7 @@ function Register() {
                                         INVALID EMAIL!!!
                                     </p>
 
-                                    <label htmlFor="password">Password</label>
+                                    {/* <label htmlFor="password">Password</label> */}
                                     <input type="password" className="field" placeholder="Enter Password"
                                         id="password"
                                         autoComplete="off"
@@ -133,7 +133,7 @@ function Register() {
                                         Allowed special characters: <span aria-label="exclamation mark">!</span> <span aria-label="at symbol">@</span> <span aria-label="hashtag">#</span> <span aria-label="dollar sign">$</span> <span aria-label="percent">%</span>
                                     </p>
 
-                                    <label htmlFor="confirmPassword">Confirm Password</label>
+                                    {/* <label htmlFor="confirmPassword">Confirm Password</label> */}
                                     <input type="password" className="field" placeholder="ReEnter Password"
                                         id="confirmPassword"
                                         autoComplete="off"
@@ -145,7 +145,7 @@ function Register() {
                                     </p>
 
 
-                                    <label htmlFor="mobile">Enter Mobile Number</label>
+                                    {/* <label htmlFor="mobile">Enter Mobile Number</label> */}
                                     <input type="text" className="field" placeholder="Mobile Number"
                                         id="mobile"
                                         autoComplete="off"

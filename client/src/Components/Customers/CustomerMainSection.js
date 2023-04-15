@@ -1,7 +1,4 @@
 import React from 'react'
-import { useEffect, useState } from "react";
-import axios from "axios";
-import { Container, TextField } from "@mui/material";
 import HeroCarousel from './HeroCarousel';
 import EntertainmentCardSlider from '../Entertainment/EntertainmentCardSlider';
 import "./CustomerMainSection.css";
@@ -24,7 +21,7 @@ function CustomerMainSection() {
         </h1>
         <EntertainmentCardSlider />
       </div>
-
+     
       <div className="container mx-auto px-4 md:px-12 my-8">
       <h1
   align="left"

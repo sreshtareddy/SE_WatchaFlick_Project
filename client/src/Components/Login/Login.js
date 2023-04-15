@@ -5,6 +5,7 @@ import NavBarSimple from '../Customers/NavBarSimple.js';
 import { Container, Row, Col, Form, FormGroup } from 'react-bootstrap';
 import { Navigate } from "react-router-dom";
 import CustomerHomeLanding from "../Customers/CustomerHomeLanding"
+import { useNavigate }  from 'react-router-dom';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import "./Login.css";
@@ -19,6 +20,7 @@ const Login = () => {
   const [errMsg, setErrMsg] = useState('');
   const [success, setSuccess] = useState(false);
   const [userName, setUserName] = useState("");
+  const navigate = useNavigate();
 
   useEffect(() => {
     console.log(userName);
