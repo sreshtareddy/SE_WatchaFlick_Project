@@ -1,0 +1,9 @@
+.TextField {
+    padding-left: 0%;
+    padding-right: 0%;
+    color: white;
+    height: 50;
+    align-items:end;
+    text-decoration-color: black;
+    border-radius: 20px;
+  }
