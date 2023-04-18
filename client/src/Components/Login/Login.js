@@ -2,7 +2,7 @@ import { useState, useEffect  } from 'react';
 import { GoogleLogin } from 'react-google-login';
 import FacebookLogin from 'react-facebook-login';
 import NavBarSimple from '../Customers/NavBarSimple.js';
-import { Container, Row, Col, Form, FormGroup } from 'react-bootstrap';
+import {  Form, FormGroup } from 'react-bootstrap';
 import { Navigate } from "react-router-dom";
 import CustomerHomeLanding from "../Customers/CustomerHomeLanding"
 import { useNavigate }  from 'react-router-dom';

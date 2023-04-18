@@ -37,7 +37,6 @@ function App() {
       <Router>
         <Routes>
         <Route path='/' element={<Home/>} />
-        import SupportEngine from '../chatBot/SupportEngine/Avatar.js'
         <Route path='/customerHome' element={<CustomerHome/>}/>
         <Route path='/login' element={<Login/>} />
         <Route path='/register' element={<Register/>} />  
