@@ -63,7 +63,7 @@ const { errors, isValid } = validateLoginInput(req.body);
     return res.status(400).json(errors);
   }
 const emailormobile = req.body.emailormobile;
-  const password = req.body.password;
+const password = req.body.password;
 // Find user by email
 
 const query = {
@@ -78,6 +78,7 @@ const query = {
     if (!user) {
       return res.status(404).json({ emailormobilenotfound: "Not found" });
     }
+    
 // Check password
     bcrypt.compare(password, user.password).then(isMatch => {
       if (isMatch) {
@@ -95,9 +96,11 @@ const query = {
             expiresIn: 31556926 // 1 year in seconds
           },
           (err, token) => {
+            
             res.json({
               success: true,
-              token: "Bearer " + token
+              token: "Bearer " + token,
+              user:user
             });
           }
         );
@@ -175,4 +178,5 @@ router.post("/google_login", async(req, res) => {
     }});
     
 
+    
 module.exports = router;
