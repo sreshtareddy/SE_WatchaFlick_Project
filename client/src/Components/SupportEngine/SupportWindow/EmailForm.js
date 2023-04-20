@@ -16,7 +16,7 @@ const EmailForm = props => {
         axios.put(
             'https://api.chatengine.io/users/',
             {username: email, email: email, secret: email},
-            {headers: {"Private-Key": "122fd2ab-a51e-415c-a9df-f0d89e4bfa78"}}
+            {headers: {"Private-Key": "b9c753b4-156b-4fe9-a522-be3a71024122"}}
         )
         .then(r => callback(r.data))
         .catch(e => console.log('Get or create user error', e))
@@ -25,11 +25,11 @@ const EmailForm = props => {
     function getOrCreateChat(callback) {
         axios.put(
             'https://api.chatengine.io/chats/',
-            {usernames: [email, 'Adam Drew'], is_direct_chat: true},
+            {usernames: [email, 'WatchaFlick'], is_direct_chat: true},
             {headers: {
-                "Project-ID": "90375715-744b-443f-a831-22c13a091994",
-                "User-Name": email,
-                "User-Secret": email,
+                "Project-ID": "eb28d730-4e68-4849-adbc-3c2fb982b7a3",
+                "User-Name": "WatchaFlick",
+                "User-Secret": "watchaflick@123",
             }}
         )
         .then(r => callback(r.data))
@@ -46,6 +46,7 @@ const EmailForm = props => {
             user => {
                 props.setUser && props.setUser(user)
                 getOrCreateChat(chat => {
+                    console.log("success",chat)
                     setLoading(false)
                     props.setChat && props.setChat(chat)
                 })

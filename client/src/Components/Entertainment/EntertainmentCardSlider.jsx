@@ -1,7 +1,8 @@
 import React from "react";
 import Slider from "react-slick";
 import Modal from '@mui/material/Modal';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 import { Typography, Button } from '@mui/material';
 import Box from '@mui/material/Box';
 import {
@@ -41,6 +42,7 @@ const EntertainmentCard = (props) => {
 
 const EntertainmentCardSlider = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [movies, setMovies] = useState([]);
   const [value, setValue] = useState(0);
 
 
@@ -61,24 +63,19 @@ const EntertainmentCardSlider = () => {
     console.log("Selected index:", newValue);
   };
   
-  const EntertainmentImage = [
-    "https://lumiere-a.akamaihd.net/v1/images/p_antmanquantumania_update_1006_122aeffe.jpeg",
-    
-    "https://lumiere-a.akamaihd.net/v1/images/p_avatar_thewayofwater_97_v2_01ccadaf.png",
-    "https://lumiere-a.akamaihd.net/v1/images/p_thelittlemermaid_2023_final_796_94759fcc.jpeg",
-    
-    "https://lumiere-a.akamaihd.net/v1/images/pp_disney_blackpanther_wakandaforever_1289_d3419b8f.jpeg",
-    "https://lumiere-a.akamaihd.net/v1/images/p_drstrangeinthemultiverseofmadness_245_476cabb1.jpeg",
-    "https://posters.movieposterdb.com/13_05/1995/114709/s_114709_6645f9fc.jpg",
-    "https://c4.wallpaperflare.com/wallpaper/675/275/718/joker-2019-movie-joker-joaquin-phoenix-actor-men-hd-wallpaper-preview.jpg",
-    "https://lumiere-a.akamaihd.net/v1/images/p_junglecruise_21740_v2_bb7f0ae4.jpeg",
-    "https://lumiere-a.akamaihd.net/v1/images/p_cruella_21672_ba40c762.jpeg",
-    "https://cdn.shopify.com/s/files/1/0057/3728/3618/products/scream-vi_bevzvyks_500x749.jpg?v=1676559336",
-    "https://cdn.shopify.com/s/files/1/0057/3728/3618/products/7cec51616b83bc608b88df61e3f0000c_12279cbf-0897-461b-a2eb-a4f934eb37a6_500x749.jpg?v=1573594798",
-    "https://m.media-amazon.com/images/M/MV5BOWZlMjFiYzgtMTUzNC00Y2IzLTk1NTMtZmNhMTczNTk0ODk1XkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_SX300.jpg",
-    "https://cdn.shopify.com/s/files/1/0057/3728/3618/products/scream_six_500x749.jpg?v=1672414929",
-    
-  ];
+  useEffect(() => {
+    axios.get('http://localhost:3000/api/movies/movie?end_date=2013-12-25&start_date=2004-11-19')
+      .then(response => {
+        const movies = response.data;
+        console.log(movies)
+        const movieImages = movies.movies.map(movie => movie.movie_image);
+        setMovies(movieImages);
+        console.log(movieImages);
+      })
+      .catch(error => {
+        console.error(error);
+      });
+  }, []);
 
   const settings = {
     infinite: false,
@@ -120,14 +117,14 @@ const EntertainmentCardSlider = () => {
   onChange={handleSliderChange}
   onChangeCommitted={handleSliderChangeCommitted}
   min={0}
-  max={EntertainmentImage.length - 1}
+  max={movies.length - 1}
   step={1}
   marks={true}
 >
 
-  {EntertainmentImage.map((image, index) => (
+  {movies.map((image, index) => (
     <div key={index} onClick={() => handleImageClick(index)}>
-      <EntertainmentCard src={image} alt={`EntertainmentImage ${index + 1}`} width={"30%"}
+      <EntertainmentCard src={image} alt={`movies ${index + 1}`} width={"30%"}
           height={"50%"}
           objectFit="cover"/>
     </div>
@@ -159,7 +156,7 @@ const EntertainmentCardSlider = () => {
     }}
   >
     <CardContent sx={{ display: 'flex', alignItems: 'center' }}>
-  <img src={EntertainmentImage[value]} alt={`EntertainmentImage ${value + 1}`} style={{ maxWidth: '300px', maxHeight: '300px' }} />
+  <img src={movies[value]} alt={`movies ${value + 1}`} style={{ maxWidth: '300px', maxHeight: '300px' }} />
 
   <Box sx={{ display: 'flex', flexDirection: 'column', ml: 3 }}>
    
@@ -200,5 +197,4 @@ const EntertainmentCardSlider = () => {
     </>
   );
 };
-
 export default EntertainmentCardSlider;
