@@ -66,6 +66,7 @@ const Login = () => {
       console.log(response.data.token)
       console.log(response.data.user._id)
       setUserName(response.data.user.first_name)
+      console.log("LOGIN SUCCESS", userName)
       
     } catch (error) {
       setErrMsg(error.response.data);

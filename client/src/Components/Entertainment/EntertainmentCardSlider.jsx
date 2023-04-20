@@ -43,6 +43,7 @@ const EntertainmentCard = (props) => {
 const EntertainmentCardSlider = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [movies, setMovies] = useState([]);
+  const [movieName,setMovieName] = useState([]);
   const [value, setValue] = useState(0);
 
 
@@ -69,13 +70,16 @@ const EntertainmentCardSlider = () => {
         const movies = response.data;
         console.log(movies)
         const movieImages = movies.movies.map(movie => movie.movie_image);
+        const movieTitles = movies.movies.map(movie => movie.movie_name);
         setMovies(movieImages);
-        console.log(movieImages);
+        setMovieName(movieTitles);
+        console.log("movieNames",movieTitles)
+        console.log("Images",movieImages);
       })
       .catch(error => {
         console.error(error);
       });
-  }, []);
+  },[]);
 
   const settings = {
     infinite: false,
@@ -165,7 +169,7 @@ const EntertainmentCardSlider = () => {
   className="text-2xl font-bold text-gray-800 sm:ml-3 ml-0 my-3"
   style={{ color: "#F8BB16" }}
 >
-         Title
+        {movieName[value]}
         </h1>
       <Rating name="read-only" readOnly />
    
