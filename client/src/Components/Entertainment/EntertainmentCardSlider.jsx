@@ -43,9 +43,17 @@ const EntertainmentCard = (props) => {
 const EntertainmentCardSlider = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [movies, setMovies] = useState([]);
+  const [movieLength, setMovieLength] = useState([]);
+  const [movieRating, setMovieRating] = useState([]);
+  const [movieGenre, setMovieGenre] = useState([]);
+  const [movieReleaseDate, setReleaseDate] = useState([])
   const [movieName,setMovieName] = useState([]);
   const [value, setValue] = useState(0);
+  const [ratingValue, setRatingValue] = useState(0);
 
+  const handleRatingChange = (event, newValue) => {
+    setRatingValue(newValue);
+  };
 
   const handleCloseModal = () => {
     setIsModalOpen(false);
@@ -68,13 +76,27 @@ const EntertainmentCardSlider = () => {
     axios.get('http://localhost:3000/api/movies/movie?end_date=2013-12-25&start_date=2004-11-19')
       .then(response => {
         const movies = response.data;
-        console.log(movies)
         const movieImages = movies.movies.map(movie => movie.movie_image);
         const movieTitles = movies.movies.map(movie => movie.movie_name);
+        const movieLength = movies.movies.map(movie => movie.movie_length);
+        const movieRating = movies.movies.map(movie => movie.movie_rating.map(rate => rate.rating_name));
+        const movieGenre = movies.movies.map(movie => movie.movie_genres.map(genre => genre.genre_name).join(", "));
+        const releaseDate = movies.movies.map(movie => movie.movie_release_date);
+        const updated_dates = releaseDate.map((date) => {
+          const d = new Date(date);
+          const month = d.toLocaleString('default', { month: 'short' });
+          const day = d.getDate();
+          const year = d.getFullYear();
+          return `${month} ${day}, ${year}`;
+        });
+        // const movieTitles = movies.movies.map(movie => movie.movie_name);
+        // const movieLength = movies.movies.map(movie => movie.movie_length);
         setMovies(movieImages);
         setMovieName(movieTitles);
-        console.log("movieNames",movieTitles)
-        console.log("Images",movieImages);
+        setMovieLength(movieLength);
+        setMovieRating(movieRating);
+        setMovieGenre(movieGenre);
+        setReleaseDate(updated_dates);
       })
       .catch(error => {
         console.error(error);
@@ -155,38 +177,41 @@ const EntertainmentCardSlider = () => {
       display: "flex",
       padding: "5px",
       alignItems: "center",
-      bgcolor: "#606060",
+      bgcolor: "#1E1E1E",
       color: "#FFFF00",
     }}
   >
-    <CardContent sx={{ display: 'flex', alignItems: 'center' }}>
-  <img src={movies[value]} alt={`movies ${value + 1}`} style={{ maxWidth: '300px', maxHeight: '300px' }} />
+   <CardContent sx={{ display: 'flex', alignItems: 'center', bgcolor: '#1E1E1E', padding: '24px' }}>
+  <img src={movies[value]} alt={`movies ${value + 1}`} style={{ maxWidth: '200px', maxHeight: '300px', objectFit: 'contain' }} />
 
-  <Box sx={{ display: 'flex', flexDirection: 'column', ml: 3 }}>
-   
-    <h1
- 
-  className="text-2xl font-bold text-gray-800 sm:ml-3 ml-0 my-3"
-  style={{ color: "#F8BB16" }}
->
+  <Box sx={{ display: 'flex', flexDirection: 'column', ml: 3, flexGrow: 1 }}>
+    <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+      <Typography variant="h4" component="h2" gutterBottom style={{ color: '#F8BB16', fontWeight: 'bold' }}>
         {movieName[value]}
-        </h1>
-      <Rating name="read-only" readOnly />
-   
+      </Typography>
 
-    <Typography variant="h6" gutterBottom style={{ color: '#F8BB16' }}>
-      IMDB Rating
+    </Box>
+    <Typography variant="h6" component="h6" gutterBottom style={{ color: '#F8BB16', fontWeight: 'bold', display: 'flex', alignItems: 'center' }}>
+  <span style={{ marginRight: '1rem' }}>{movieReleaseDate[value]}</span>
+  <Rating 
+    name="movie-rating"
+    value={ratingValue}
+    onChange={handleRatingChange}
+  />
+</Typography>
+
+    
+    <Typography variant="h6" gutterBottom style={{ color: 'white', marginTop: '12px' }}>
+      {movieLength[value]} | {movieRating[value]} | {movieGenre[value]}
     </Typography>
 
-    <Typography variant="body1" color="text.secondary">
-      Release Date:
-    </Typography>
-
-    <Button size="small" variant="contained" color="error" sx={{ mt: 2 }}>
-      Book Tickets
+    <Button size="small" variant="contained" color="error" sx={{ mt: 3, width: '200px', alignSelf: 'flex-start', fontWeight:'bold' }}>
+     Book Tickets
     </Button>
+
   </Box>
 </CardContent>
+
 
   </Card>
 </Paper>
