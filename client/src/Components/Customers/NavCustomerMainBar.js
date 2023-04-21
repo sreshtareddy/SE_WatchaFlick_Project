@@ -70,6 +70,17 @@ function NavCustomerMainBar({ userName }) {
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
+
+  const handleMenuClick = (setting) => {
+    if (setting === 'Dashboard') {
+      window.location.href = '/dashboard';
+    } else if (setting === 'Logout') {
+      handleLogout();
+    } else {
+      handleCloseUserMenu();
+    }
+  }
+
   const handleOpenUserMenu = (event) => {
     setAnchorElUser(event.currentTarget);
   };
@@ -219,7 +230,7 @@ function NavCustomerMainBar({ userName }) {
               onClose={handleCloseUserMenu}
             >
               {setting.map((setting, index) => (
-                <MenuItem key={index} onClick={setting === 'Logout' ? handleLogout : handleCloseUserMenu}>
+                <MenuItem key={index} onClick={() => handleMenuClick(setting)}>
                   <Typography textAlign="center">{setting}</Typography>
                 </MenuItem>
               ))}

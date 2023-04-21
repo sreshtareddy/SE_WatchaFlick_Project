@@ -2,6 +2,7 @@ import React from "react";
 import Slider from "react-slick";
 import Modal from '@mui/material/Modal';
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { Typography, Button } from '@mui/material';
 import Box from '@mui/material/Box';
@@ -205,7 +206,8 @@ const EntertainmentCardSlider = () => {
       {movieLength[value]} | {movieRating[value]} | {movieGenre[value]}
     </Typography>
 
-    <Button size="small" variant="contained" color="error" sx={{ mt: 3, width: '200px', alignSelf: 'flex-start', fontWeight:'bold' }}>
+    <Button size="small" variant="contained" color="error" sx={{ mt: 3, width: '200px', alignSelf: 'flex-start', fontWeight:'bold' }} component={Link}
+  to="/book-tickets">
      Book Tickets
     </Button>
 
