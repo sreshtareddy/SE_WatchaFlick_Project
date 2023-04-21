@@ -10,6 +10,7 @@ import { gapi } from "gapi-script";
 import MovieHome from './Components/MovieDisplay/MovieHome';
 import Booking from './Components/Booking/booking.js';
 import Dashboard from './Components/Dashboard/dashboard.js';
+import OnsiteHome from './Components/OnsiteManagement/onsiteHome';
 
 // React slick css
 import "slick-carousel/slick/slick.css";
@@ -48,6 +49,7 @@ function App() {
         <Route path='/homeTry' element={<MovieHome/>}/>
         <Route path='/book-tickets' element={<Booking/>}/>
         <Route path='/dashboard' element={<Dashboard/>}/>
+        <Route path='/onsiteManagement' element={<OnsiteHome/>}/>
         </Routes>
       </Router>
     </>

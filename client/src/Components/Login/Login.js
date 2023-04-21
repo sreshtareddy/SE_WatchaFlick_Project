@@ -103,7 +103,7 @@ const Login = () => {
           <>
             <NavBarSimple />
             
-            <div className="card-wrapper">
+            <div className="card-wrapper" sx={{ bgcolor: 'black' }}>
               <div className="card">
               <h1
   className="text-2xl font-bold text-gray-800 sm:ml-3 ml-0 my-3"
