@@ -102,6 +102,7 @@ const Login = () => {
         ) : (
           <>
             <NavBarSimple />
+            
             <div className="card-wrapper">
               <div className="card">
               <h1

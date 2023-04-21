@@ -94,7 +94,10 @@ function Register() {
                         <NavBarSimple />
                         <div className="card-wrapper">
                             <div className="card">
-                                <h2>Register</h2>
+                            <h1
+  className="text-2xl font-bold text-gray-800 sm:ml-3 ml-0 my-3"
+  style={{ color: "#F8BB16" }}
+>Register</h1>
                                 <Form >
                                     <p className={err[Object.keys(err)[0]] ? 'errorMsg' : "offscreen"}>{err[Object.keys(err)[0]]}</p>
                                     {/* <label htmlFor="firstname">First Name</label> */}

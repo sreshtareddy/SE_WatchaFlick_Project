@@ -36,8 +36,6 @@ function NavBarSimple() {
           </div>
           <ul className={click ? 'nav-menu active' : 'nav-menu'}>
           
-          
-          
             <li>
               <Link
                 to='/login'

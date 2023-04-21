@@ -97,7 +97,7 @@ function NavCustomerMainBar({ userName }) {
         <Toolbar disableGutters>
 
           <Typography
-            variant="h6"
+            variant="h4"
             noWrap
             component="a"
             href="/"
@@ -194,7 +194,7 @@ function NavCustomerMainBar({ userName }) {
             </Search>
           </Box>
           <div>
-      Welcome, {userName}!
+          Welcome, {userName}! 
     </div>
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">

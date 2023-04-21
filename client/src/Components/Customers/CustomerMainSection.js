@@ -5,7 +5,7 @@ import "./CustomerMainSection.css";
 
 function CustomerMainSection() {
   return (
-    <div style={{ backgroundColor: "#161616", padding: "10px" }}>
+    <div style={{ backgroundColor: "#161616", marginTop: "64px"}}>
       {/* <Container maxWidth="md" sx={{ mt: 20 }}>
         <TextField  type="search" id="search" label="Search for movies, events, plays, sports and activities" sx={{ width: 600, alignItems:"right" }} ></TextField>
       </Container> */}
