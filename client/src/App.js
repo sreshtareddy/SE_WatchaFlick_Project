@@ -11,6 +11,7 @@ import MovieHome from './Components/MovieDisplay/MovieHome';
 import Booking from './Components/Booking/booking.js';
 import Dashboard from './Components/Dashboard/dashboard.js';
 import OnsiteHome from './Components/OnsiteManagement/onsiteHome';
+import SupportAdmin from './Components/SupportAdmin';
 
 // React slick css
 import "slick-carousel/slick/slick.css";
@@ -45,6 +46,7 @@ function App() {
         <Route path='/register' element={<Register/>} />  
         <Route path='/customerMainHome' element={<CustomerHomeLanding/>}/>
         <Route path='/forgotPassword' element={<ForgotPassword/>}/>
+        <Route path='/support' element={<SupportAdmin/>}/>
         <Route path='/api/reset-password' element={<ForgotPasswordMain/>}/>
         <Route path='/homeTry' element={<MovieHome/>}/>
         <Route path='/book-tickets' element={<Booking/>}/>
